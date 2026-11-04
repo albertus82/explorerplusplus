@@ -462,6 +462,12 @@ void ShellBrowserImpl::OnNavigationComitted(const NavigationRequest *request)
 	StartDirectoryMonitoring();
 
 	AddNavigationItems(request, request->GetItems());
+	
+	if (m_folderSettings.viewMode == ViewMode::Details)
+	{
+	    AutoSizeColumns();
+	}
+	
 	SelectItems(GetItemsToSelectAfterNavigation(request));
 
 	SetNavigationState(NavigationState::Committed);
